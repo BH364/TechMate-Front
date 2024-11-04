@@ -22,7 +22,7 @@ const Login = () => {
             withCredentials:true
         })
         dispatch(addUser(res.data));
-        return navigate("/");
+        navigate("/");
     }
 
 catch(err){
@@ -38,7 +38,7 @@ catch(err){
                     <div className=''>
                         <label className="form-control w-full max-w-xs my-2">
                             <div className="label">
-                                <span className="label-text text-blue-400 font-medium">Email ID :{emailId}</span>
+                                <span className="label-text text-blue-400 font-medium">Email ID :</span>
                             </div>
                             <input 
                             type="text" 
