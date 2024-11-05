@@ -21,20 +21,20 @@ const UserCard = ({ user }) => {
   }
   return (
     <div className=''>
-      <div className="card bg-slate-800 font-medium text-white w-96 shadow-xl">
+      <div className="card bg-slate-800 font-medium text-white w-64  md:w-96 shadow-xl ">
         <figure>
           <img
             src={photourl || DEFAULT_IMG}
-            alt="User Photo" className='w-56 m-2'/>
+            alt="User Photo" className='w-48 md:w-56 m-2'/>
         </figure>
         <div className="card-body">
           <h2 className="card-title">{firstName + " " + (lastName || "")}</h2>
         {skills &&  <p className='pt-1'>{skills || ""}</p>}
     {  <p className='pt-1'>{ gender || ""}   {age || ""} </p>}
           <p className='pt-4'>{about}</p>
-          <div className="card-actions justify-center m-2 my-6">
-            <button className="btn btn-primary mx-2 items-center text-center justify-center" onClick={()=> {handleFeed ("ignored",_id) }}>Ignore</button>
-            <button className="btn btn-secondary mx-2" onClick={()=> {handleFeed ("interested",_id) }}>Interested</button>
+          <div className="md:justify-center md:m-2 md:my-6">
+            <button className="btn btn-primary mr-2 md:mx-2" onClick={()=> {handleFeed ("ignored",_id) }}>Ignore</button>
+            <button className="btn btn-secondary ml-2 md:mx-2" onClick={()=> {handleFeed ("interested",_id) }}>Interested</button>
           </div>
         </div>
       </div>

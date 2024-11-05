@@ -30,14 +30,14 @@ const Requests = () => {
   if(!requests) return;
   if(requests.length==0) return (
     <div>
-      <h1 className='text-4xl font-bold text-center my-10'>No requests found🔍☹️</h1>
+      <h1 className='text-xl md:text-2xl lg:text-4xl font-bold text-center my-10 mb-96'>No requests found🔍☹️</h1>
     </div>
   );
 
   return (
-    <div className='text-center h-full mb-20 mt-10'>
-    <h1 className='text-3xl text-blue-400'>Requests</h1>
-    <div className='mx-auto w-1/2 my-4'>
+    <div className='text-center h-full mb-44 mt-10'>
+    <h1 className='md:text-3xl text-2xl text-blue-400'>Requests</h1>
+    <div className='mx-auto lg:w-1/2 md:w-2/3 my-4'>
           {requests.map((request)=>{
             return ( <RequestCard key={request._id} user={request}/> )})}
        </div>
