@@ -24,15 +24,18 @@ const NavBar = ()=>{
       }
     }
     return(
-        <div className="navbar bg-base-300">
+        <div className="navbar bg-[rgba(255, 255, 255, 1)]">
         <div className="flex-1">
-          <Link to="/" className="btn btn-ghost text-xl text-[#f43f5e] font-bold font-serif italic">👩🏻‍💻TechMate</Link>
+          <Link to="/" className="btn btn-ghost text-[#f62121] font-bold font-serif italic text-xl md:text-2xl  lg:text-3xl">👩‍💻TechMate</Link>
         </div>
-        {user &&
+        {!user && (<div><Link to='/login' className="btn btn-primary mx-2">Login </Link> </div>) }
+
+        { user && 
         <div className="flex-none gap-2">
-          <div className="form-control">Welcome , {user.firstName} 
+         <div className="form-control text-[14px] md:text-[16px]">Welcome , {user.firstName} 
           </div>
-          <div className="dropdown dropdown-end mx-5">
+        
+          <div className="dropdown dropdown-end md:mx-5 sm:mx-0">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img

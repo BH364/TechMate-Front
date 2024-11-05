@@ -40,14 +40,21 @@ const EditProfile = ({user}) => {
 
 
   return (
-    <div className='flex flex-row my-10 justify-center'>
-    <div>
+    <div className='flex flex-col items-center justify-center my-10'>
+     <div className="items-center">
+    <button className="btn px-[168px] bg-blue-800 font-bold text-white ml-2">Profile</button>
+    <button className="btn px-[168px] bg-blue-800 font-bold text-white mr-0">Preview</button>
+   </div>
+       
+    <div className='flex flex-row justify-center'>
+    
+      
         <div className='flex justify-center'>
-            <div className="card bg-slate-800 font-medium text-white w-96 shadow-xl">
+            <div className="card bg-slate-800 font-medium text-white w-96 shadow-md mx-1">
                 <div className="card-body">
                     <h2 className="card-title justify-center text-blue-400 font-extrabold">Edit Profile</h2>
                     <div className=''>
-                        <label className="form-control w-full max-w-xs my-2">
+                        <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text text-blue-400 font-medium">FirstName</span>
                             </div>
@@ -59,7 +66,7 @@ const EditProfile = ({user}) => {
                             onChange={(e)=>{ setFirstName(e.target.value)}}/>
                            
                         </label>
-                        <label className="form-control w-full max-w-xs my-2">
+                        <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text text-blue-400 font-medium">LastName</span>
                             </div>
@@ -71,7 +78,7 @@ const EditProfile = ({user}) => {
                             onChange={(e)=>{ setLastName(e.target.value)}}/>
                            
                         </label>
-                        <label className="form-control w-full max-w-xs my-2">
+                        <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text text-blue-400 font-medium">Age : </span>
                             </div>
@@ -83,7 +90,7 @@ const EditProfile = ({user}) => {
                             onChange={(e)=>{ setAge(e.target.value)}}/>
                            
                         </label>
-                        <label className="form-control w-full max-w-xs my-2">
+                        <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text text-blue-400 font-medium">Gender : </span>
                             </div>
@@ -122,7 +129,7 @@ const EditProfile = ({user}) => {
                            
 
                         </label>
-                        <label className="form-control w-full max-w-xs my-2">
+                        <label className="form-control w-full max-w-xs mt-1">
                             <div className="label">
                                 <span className="label-text text-blue-400 font-medium">About : </span>
                             </div>
@@ -134,7 +141,7 @@ const EditProfile = ({user}) => {
                             onChange={(e)=>{ setAbout(e.target.value)}}/>
                            
                         </label>
-                        <label className="form-control w-full max-w-xs my-2">
+                        <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text text-blue-400 font-medium">Photo :</span>
                             </div>
@@ -166,10 +173,9 @@ const EditProfile = ({user}) => {
                         <button className="btn btn-primary" onClick={saveProfile}>Save Profile</button>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
-    <div className=''>
     <UserCard user={{firstName,lastName,age,gender,skills,photourl,about}}/>
     </div>
     {showToast && 
@@ -179,7 +185,7 @@ const EditProfile = ({user}) => {
     <span>Profile updated successfully.</span>
   </div>
   </div>}
-    </div>
+  </div>
   )
 }
 

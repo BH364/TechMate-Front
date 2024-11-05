@@ -33,11 +33,16 @@ const Body = () => {
     fetchData();
   },[]);
   return (
-    <div className='h-full'>
-        <NavBar />
-        <Outlet />
-        <Footer />
+    <div className='relative h-full'>
+    <video className="fixed top-0 left-0 w-full h-full object-cover z-0" autoPlay loop muted>
+      <source src="https://videos.pexels.com/video-files/9667568/9667568-hd_1920_1080_25fps.mp4" type="video/mp4" />
+    </video>
+    <div className="relative z-10 font-bold text-white">
+      <NavBar />
+      <Outlet />
+      <Footer />
     </div>
+  </div>
   )
 }
 

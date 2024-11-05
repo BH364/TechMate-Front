@@ -30,11 +30,11 @@ const Connections = () => {
   if(!connections) return;
   if(connections.length==0){
     return (
-        <h1>No connections found</h1>
+        <h1 className='text-4xl font-bold text-center my-10'>No connections found ☹️🔍</h1>
     )
   }
   return (
-    <div className='text-center h-full my-10'>
+    <div className='text-center mb-20 mt-10'>
         <h1 className='text-3xl text-blue-400'>Connections</h1>
         <div className='mx-auto w-1/2 my-4'>
         {connections.map((connection)=>{
