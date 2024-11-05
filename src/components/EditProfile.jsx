@@ -14,6 +14,7 @@ const EditProfile = ({user}) => {
     const [about,setAbout] = useState(user.about);
     const [skills,setSkills] = useState(user.skills);
     const [error,setError]= useState("");
+    const [showToast,setShowToast] = useState(false);
     const dispatch = useDispatch();
     
     const saveProfile =async () =>{
@@ -26,6 +27,10 @@ const EditProfile = ({user}) => {
     withCredentials:true
 });
      dispatch(addUser(res?.data?.data));
+    setShowToast(true);
+    setTimeout(()=>{
+        setShowToast(false);
+    },3000);
 
     }
     catch(err){
@@ -167,6 +172,13 @@ const EditProfile = ({user}) => {
     <div className=''>
     <UserCard user={{firstName,lastName,age,gender,skills,photourl,about}}/>
     </div>
+    {showToast && 
+     <div className="toast toast-top toast-center">
+    
+      <div className="alert alert-success">
+    <span>Profile updated successfully.</span>
+  </div>
+  </div>}
     </div>
   )
 }
