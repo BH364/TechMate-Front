@@ -17,7 +17,7 @@ const NavBar = ({ toggleTheme, theme }) => {
 
   const handleLogout = async () => {
     try {
-      await axios.post(BASE_URL + "/logout", {}, {
+      await axios.post(BASE_URL + "/auth/logout", {}, {
         withCredentials: true,
       });
       dispatch(removeUser());
@@ -127,13 +127,13 @@ const NavBar = ({ toggleTheme, theme }) => {
             <div className={`absolute z-50 top-0 right-0 bottom-0 overflow-hidden bg-black transition-all ${visible ? 'w-full' : 'w-0'}`} >
               <div className='flex flex-col text-current'>
                 <div onClick={() => { setVisible(false) }} className='flex items-center gap-4 p-3 cursor-pointer'>
-                  <ArrowBigLeft />
-                  <p>Back</p>
+                  <ArrowBigLeft className="text-white"/>
+                  <p className="text-white">Back</p>
                 </div>
-                <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border flex flex-row gap-2' to='/'><Home />HOME</NavLink>
-                <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border flex flex-row gap-2' to='/chat'><MessageSquareTextIcon />Chats</NavLink>
-                <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border flex flex-row gap-2' to='/connections'><Users />Connections</NavLink>
-                <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border flex flex-row gap-2' to='/requests'><UserPlus />Requests</NavLink>
+                <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border flex flex-row gap-2 text-white' to='/'><Home />HOME</NavLink>
+                <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border flex flex-row gap-2 text-white' to='/chat'><MessageSquareTextIcon />Chats</NavLink>
+                <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border flex flex-row gap-2 text-white' to='/connections'><Users />Connections</NavLink>
+                <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border flex flex-row gap-2 text-white' to='/requests'><UserPlus />Requests</NavLink>
               </div>
             </div>
           </div>

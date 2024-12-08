@@ -10,7 +10,6 @@ import { useChatStore } from '../store/useChatStore';
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
   const { onlineUsers } = useChatStore();
-  console.log(onlineUsers);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -18,7 +17,7 @@ const Feed = () => {
     if (feed) return;
 
     try {
-      const res = await axios.get(`${BASE_URL}/user/feed`, {
+      const res = await axios.get(`${BASE_URL}/users/user/feed`, {
         withCredentials: true,
       });
       dispatch(addFeed(res.data));

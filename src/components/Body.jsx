@@ -42,7 +42,7 @@ const Body = () => {
     if (userData) return; // Avoid re-fetching if user data already exists
 
     try {
-      const res = await axios.get(`${BASE_URL}/profile/view`, {
+      const res = await axios.get(`${BASE_URL}/profile/profile/view`, {
         withCredentials: true,
       });
       dispatch(addUser(res.data));
@@ -65,7 +65,6 @@ const Body = () => {
     if (!socket) return;
 
     socket.on("getOnlineUsers", (onlineUsers) => {
-      console.log("Online users updated:", onlineUsers);
       useChatStore.setState({ onlineUsers });
     });
 

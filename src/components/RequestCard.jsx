@@ -10,7 +10,7 @@ const RequestCard = ({ user }) => {
 
   const reviewRequest = async (status, _id) => {
     try {
-      await axios.post(`${BASE_URL}/request/review/${status}/${_id}`, {}, {
+      await axios.post(`${BASE_URL}/requests/request/review/${status}/${_id}`, {}, {
         withCredentials: true,
       });
       dispatch(removeRequest(_id));

@@ -47,7 +47,7 @@ const EditProfile = ({ user }) => {
     try {
       const skillsArray = formData.skills.split(",").map((skill) => skill.trim());
       const res = await axios.patch(
-        BASE_URL + "/profile/edit",
+        BASE_URL + "/profile/profile/edit",
         { ...formData, skills: skillsArray },
         { withCredentials: true }
       );

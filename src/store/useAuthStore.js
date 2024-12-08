@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { io } from "socket.io-client";
 import { BASE_URL } from "../utils/constants.js";
 
-console.log(BASE_URL)
 export const useAuthStore = create((set, get) => ({
   authUser: null,
   isSigningUp: false,
@@ -17,7 +16,7 @@ export const useAuthStore = create((set, get) => ({
   
   checkAuth: async () => {
     try {
-      const res = await axios.get(`${BASE_URL}/auth/check`, {
+      const res = await axios.get(`${BASE_URL}/auth/auth/check`, {
         withCredentials: true,
       });
 
@@ -35,7 +34,7 @@ export const useAuthStore = create((set, get) => ({
   signup: async (data) => {
     set({ isSigningUp: true });
     try {
-      const res = await axios.post(`${BASE_URL}/signup`, data, {
+      const res = await axios.post(`${BASE_URL}/auth/signup`, data, {
         withCredentials: true,
       });
 
@@ -54,7 +53,7 @@ export const useAuthStore = create((set, get) => ({
   login: async (data) => {
     set({ isLoggingIn: true });
     try {
-      const res = await axios.post(`${BASE_URL}/login`, data, {
+      const res = await axios.post(`${BASE_URL}/auth/login`, data, {
         withCredentials: true,
       });
 
@@ -72,7 +71,7 @@ export const useAuthStore = create((set, get) => ({
   // User logout
   logout: async () => {
     try {
-      await axios.post(`${BASE_URL}/logout`, {}, { withCredentials: true });
+      await axios.post(`${BASE_URL}/auth/logout`, {}, { withCredentials: true });
       set({ authUser: null });
       toast.success("Logged out successfully");
       get().disconnectSocket();
@@ -86,7 +85,7 @@ export const useAuthStore = create((set, get) => ({
   updateProfile: async (data) => {
     set({ isUpdatingProfile: true });
     try {
-      const res = await axios.put(`${BASE_URL}/profile`, data, {
+      const res = await axios.put(`${BASE_URL}/profile/profile`, data, {
         withCredentials: true,
       });
 

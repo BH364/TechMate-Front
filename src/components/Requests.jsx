@@ -13,7 +13,7 @@ const Requests = () => {
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get(`${BASE_URL}/user/requests/recieved`, {
+      const res = await axios.get(`${BASE_URL}/users/user/requests/recieved`, {
         withCredentials: true,
       });
       dispatch(addRequest(res?.data?.data));

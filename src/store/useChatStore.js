@@ -31,7 +31,6 @@ export const useChatStore = create((set, get) => ({
     set({ isMessagesLoading: true });
     try {
       const res = await axios.get(`${BASE_URL}/messages/${userId}`, { withCredentials: true });
-      console.log(res.data.messages)
       set({ messages: res.data.messages });
     } catch (error) {
       console.error("Error fetching messages:", error);
@@ -50,7 +49,6 @@ export const useChatStore = create((set, get) => ({
         messageData,
         { withCredentials: true }
       );
-      console.log(res.data);
       set({ messages: [...messages, res.data] });
     } catch (error) {
       console.error("Error sending message:", error);
