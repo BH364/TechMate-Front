@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+a.active hr {
+    display: block;
+    border: none; /* Remove default styling */
+    height: 2px;  /* Set the desired thickness */
+    background-color: currentColor; /* Match the current text color */
+  }
+  /* Add this to your global or specific CSS file for the dropdown */
+.dropdown {
+  position: relative;
+  z-index: 50; /* This ensures the dropdown is above other elements */
+}
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 1000; /* This places the dropdown menu above all other content */
+  top: 100%; /* Adjust depending on the dropdown position */
+  left: 0;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+}
