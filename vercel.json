@@ -1,8 +1,16 @@
 {
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/"
-      }
-    ]
-  }
+  "rewrites": [
+    {
+      "source": "/auth/(.*)",
+      "destination": "https://tech-mate-backend.vercel.app/auth/$1"
+    },
+    {
+      "source": "/profile/(.*)",
+      "destination": "https://tech-mate-backend.vercel.app/profile/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
