@@ -2,10 +2,9 @@ import { create } from "zustand";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { io } from "socket.io-client";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL } from "../utils/constants.js";
 
-// const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:7777" : "/";
-
+console.log(BASE_URL)
 export const useAuthStore = create((set, get) => ({
   authUser: null,
   isSigningUp: false,
@@ -15,7 +14,7 @@ export const useAuthStore = create((set, get) => ({
   onlineUsers: [],
   socket: null,
 
-  // Check authentication status
+  
   checkAuth: async () => {
     try {
       const res = await axios.get(`${BASE_URL}/auth/check`, {
