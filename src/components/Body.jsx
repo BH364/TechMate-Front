@@ -47,11 +47,12 @@ const Body = () => {
       });
       dispatch(addUser(res.data));
     } catch (err) {
-      if(err.status===401){
-        return navigate('/login')
+      if (err.response && err.response.status === 401) {
+        return navigate('/login'); // Redirect to login if unauthorized
       }
-      return navigate("/landing"); // Redirect to login on error
+      return navigate("/landing"); // Redirect to landing if another error occurs
     }
+    
   };
 
   // Fetch user data on component mount
