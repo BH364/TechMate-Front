@@ -13,7 +13,6 @@ export const useAuthStore = create((set, get) => ({
   onlineUsers: [],
   socket: null,
 
-  
   checkAuth: async () => {
     try {
       const res = await axios.get(`${BASE_URL}/auth/auth/check`, {
@@ -72,7 +71,7 @@ export const useAuthStore = create((set, get) => ({
   logout: async () => {
     try {
       await axios.post(`${BASE_URL}/auth/logout`, {}, { withCredentials: true });
-      set({ authUser: null });
+      set({ authUser: null, onlineUsers: [], socket: null });
       toast.success("Logged out successfully");
       get().disconnectSocket();
     } catch (error) {
@@ -82,34 +81,34 @@ export const useAuthStore = create((set, get) => ({
   },
 
   // Update profile
-  updateProfile: async (data) => {
-    set({ isUpdatingProfile: true });
-    try {
-      const res = await axios.put(`${BASE_URL}/profile/profile`, data, {
-        withCredentials: true,
-      });
+  // updateProfile: async (data) => {
+  //   set({ isUpdatingProfile: true });
+  //   try {
+  //     const res = await axios.put(`${BASE_URL}/profile/profile`, data, {
+  //       withCredentials: true,
+  //     });
 
-      set({ authUser: res.data });
-      toast.success("Profile updated successfully");
-    } catch (error) {
-      console.error("Update profile error:", error);
-      toast.error(error.response?.data || "Failed to update profile.");
-    } finally {
-      set({ isUpdatingProfile: false });
-    }
-  },
+  //     set({ authUser: res.data });
+  //     toast.success("Profile updated successfully");
+  //   } catch (error) {
+  //     console.error("Update profile error:", error);
+  //     toast.error(error.response?.data || "Failed to update profile.");
+  //   } finally {
+  //     set({ isUpdatingProfile: false });
+  //   }
+  // },
 
   // Connect to Socket.IO
   connectSocket: () => {
     const { authUser } = get();
-    if (!authUser || get().socket?.connected) return;
+    if (!authUser || !authUser._id || get().socket?.connected) return;
 
     const socket = io(BASE_URL, {
       query: { userId: authUser._id },
       withCredentials: true,
     });
-     socket.connect()
-    set({ socket:socket });
+
+    set({ socket });
 
     socket.on("getOnlineUsers", (userIds) => {
       set({ onlineUsers: userIds });
@@ -123,6 +122,9 @@ export const useAuthStore = create((set, get) => ({
   // Disconnect from Socket.IO
   disconnectSocket: () => {
     const socket = get().socket;
-    if (socket?.connected) socket.disconnect();
+    if (socket?.connected) {
+      socket.disconnect();
+      set({ socket: null });
+    }
   },
 }));
