@@ -39,14 +39,13 @@ const Body = () => {
 
   // Fetch user profile data
   const fetchData = async () => {
-    if (userData) navigate('/'); // Avoid re-fetching if user data already exists
+    if (userData) return; // Avoid re-fetching if user data already exists
 
     try {
       const res = await axios.get(`${BASE_URL}/profile/profile/view`, {
         withCredentials: true,
       });
       dispatch(addUser(res.data));
-      navigate('/')
     } catch (err) {
       if (err.response && err.response.status === 401) {
         return navigate('/login'); // Redirect to login if unauthorized
